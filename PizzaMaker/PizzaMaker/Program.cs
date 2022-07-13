@@ -3,7 +3,26 @@ using Microsoft.Extensions.DependencyInjection;
 using PizzaMaker.Data;
 using PizzaMaker.Models;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(
+    options =>
+    {
+        options.AddPolicy(
+            "AllowCors",
+            builder =>
+            {
+
+                builder.AllowAnyOrigin().WithMethods(
+                    HttpMethod.Get.Method,
+                    HttpMethod.Put.Method,
+                    HttpMethod.Post.Method,
+                    HttpMethod.Delete.Method).AllowAnyHeader().WithExposedHeaders("CustomHeader");
+            });
+    });
+
 builder.Services.AddDbContext<PizzaMakerContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("PizzaMakerContext") ?? throw new InvalidOperationException("Connection string 'PizzaMakerContext' not found.")));
 
@@ -29,7 +48,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowCors");
 app.UseAuthorization();
 
 app.MapControllers();

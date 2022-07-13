@@ -1,0 +1,59 @@
+.home,.about{
+    max-width: 800px;
+    margin: 0 5px;
+}
+.about{
+    p{
+        text-align: left;
+    }
+}
+.pizza_list{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: start;
+
+    min-height: calc(120vh - 300px);
+    >div{
+        margin-bottom: 20px;
+        height: fit-content;
+        width: 150px;
+        .el-image{
+            width: 100%;
+            height: 120px;
+        }
+        .el-input-group__append{
+            background-color: #337ecc;
+            color: white;
+        }
+    }
+    p{
+        margin: 3px auto;
+    }
+    span{
+        font-size: 0.8rem;
+        padding: 2px 5px;
+    }
+    
+}
+.trolley_btn{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.trolley_item{
+    padding: 0 20px;
+    max-width: 500px;
+    margin: 0 auto 10px;
+    display: flex;
+    text-align: left;
+    font-size: 1rem;
+    border-bottom:#ababab 1px solid;
+    >div{
+        padding: 3px 5px;
+    }
+    >div:nth-child(1){
+        flex-grow: 2;
+    }
+}

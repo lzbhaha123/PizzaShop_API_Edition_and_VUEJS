@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PizzaMaker.Data;
 using PizzaMaker.Models;
 
@@ -36,12 +39,17 @@ namespace PizzaMaker.Controllers
                                             {
                                                 id = p.PizzaId,
                                                 name = p.Name,
-                                                Toppings = (from tp in _context.ToppingPizza join t in _context.Topping 
+                                                img = p.Image,
+                                                total=0,
+                                                price = (from tp in _context.ToppingPizza
+                                                         join t in _context.Topping
+                                                            on tp.ToppingId equals t.ToppingId
+                                                         where tp.PizzaId == p.PizzaId select t.Price).Sum(),
+                                                toppings = (from tp in _context.ToppingPizza join t in _context.Topping 
                                                             on tp.ToppingId equals t.ToppingId where tp.PizzaId == p.PizzaId select 
                                                             new
                                                             {
                                                                 name = t.Name,
-                                                                price = t.Price,
                                                                 size = tp.ToppingSize
                                                             }).ToList(),
                                             }
@@ -64,7 +72,8 @@ namespace PizzaMaker.Controllers
                                          {
                                              id = p.PizzaId,
                                              name = p.Name,
-                                             Toppings = (from tp in _context.ToppingPizza
+                                             img = p.Image,
+                                             toppings = (from tp in _context.ToppingPizza
                                                          join t in _context.Topping
                                                          on tp.ToppingId equals t.ToppingId
                                                          where tp.PizzaId == p.PizzaId

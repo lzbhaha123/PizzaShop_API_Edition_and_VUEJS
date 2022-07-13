@@ -10065,11 +10065,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lzban\\Development\\PizzaMaker\\PizzaMaker\\PizzaMaker.csproj",
+      "projectUniqueName": "C:\\Users\\lzban\\Development\\PizzaMakerAPIEdition\\PizzaMaker\\PizzaMaker\\PizzaMaker.csproj",
       "projectName": "PizzaMaker",
-      "projectPath": "C:\\Users\\lzban\\Development\\PizzaMaker\\PizzaMaker\\PizzaMaker.csproj",
+      "projectPath": "C:\\Users\\lzban\\Development\\PizzaMakerAPIEdition\\PizzaMaker\\PizzaMaker\\PizzaMaker.csproj",
       "packagesPath": "C:\\Users\\lzban\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lzban\\Development\\PizzaMaker\\PizzaMaker\\obj\\",
+      "outputPath": "C:\\Users\\lzban\\Development\\PizzaMakerAPIEdition\\PizzaMaker\\PizzaMaker\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lzban\\AppData\\Roaming\\NuGet\\NuGet.Config",

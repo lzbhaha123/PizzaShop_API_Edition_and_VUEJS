@@ -1,49 +1,64 @@
 <template>
     <div>
-        <p v-for="p in pizzas">{{p.pizza.name}}</p>
+        <div class="pizza_list">
+            <div v-for="p in pizzas">
+                <el-image fit="fill" :src="p.pizza.img" />
+                <p>{{p.pizza.name}}</p>
+                <div>
+                    <span v-for="(t,i) in p.pizza.toppings"> {{t.name}} </span>
+                </div>
+                <div>Price:${{p.pizza.price}}</div>
+                <el-input-number :min="0" v-model="p.pizza.total" :step="1" />
 
-        <el-row>
-            <el-col
-            v-for="(o, p) in pizzas"
-            :key="p"
-            :span="10"
-            :offset="1"
-            >
-                <el-card :body-style="{ padding: '0px' }">
-                    <img
-                    src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                    class="image"
-                    />
-                    <div style="padding: 14px">
-                    <span>{{o.pizza.name}}</span>
-                    <div class="bottom">
-                        <p v-for="t in o.pizza.toppings"> {{t.name}} </p>
-                    </div>
-                    </div>
-                </el-card>
-            </el-col>
-        </el-row>
+            </div>
+        </div>
+        <el-drawer
+            size="80%"
+            v-model="trolleyDrawer"
+            title="My trolley"
+            direction="btt"
+        >
 
 
-
-        <el-button>I am ElButton</el-button>
+            <div v-for="(p,i) in pizzas">
+                <div class="trolley_item" v-if="p.pizza.total>0">
+                    <div>{{p.pizza.name}}</div>
+                    <div>Count:{{p.pizza.total}}&nbsp;&nbsp;Price:${{p.pizza.price * p.pizza.total }}</div>
+                </div>
+            </div>
+            <div>
+                Total:${{totalPrice}}
+            </div>
+        </el-drawer>
+        <el-button @click="trolleyDrawer = true" class="trolley_btn"  type="primary">My trolley</el-button>
     </div>
 </template>
 <script lang="ts">
 
 import {defineComponent } from 'vue'
-import {ElRow,ElCol, ElButton,ElCard } from 'element-plus'
-import axios from "axios";
+import { ElButton,ElImage,ElInputNumber } from 'element-plus'
+import axios from 'axios';
 export default defineComponent ({
     name:"PizzaList",
-    components:{ElRow,ElCol,ElButton,ElCard },
+    components:{ElButton,ElImage,ElInputNumber  },
     /*
     props:{
         pizzas:['Hawaii Pizza','Cheese Pizza']
     }*/
     data(){
         return{
-            pizzas:[]
+            pizzas:[],
+            trolleyDrawer:false,
+            totalPrice:0
+        }
+    },
+    watch:{
+        trolleyDrawer(){
+            this.totalPrice = 0
+            for(var i=0;i<this.pizzas.length;i++){
+                this.totalPrice+= this.pizzas[i].pizza.total * this.pizzas[i].pizza.price
+            }
+            this.$forceUpdate()
         }
     },
     mounted() {
@@ -54,19 +69,22 @@ export default defineComponent ({
                 'Content-Type': 'application/json'
             },
         }).then(response => {
-            this.pizzas = response.data ,
-            console.log(this.pizzas[0].pizza.id)
+            this.pizzas = response.data
         })  
-       
-       /*
-(function (){
-            _this.data.pizzas = response.data
-            console.log(_this.data.pizzas[0])
-        })
-
-       */
         
     },
+    methods:{
+        
+        myTrolley(){
+
+        }
+    },
+    computed:{
+        
+    }
 })
 
 </script>
+<style scoped>
+
+</style>

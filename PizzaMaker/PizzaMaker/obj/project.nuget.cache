@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JDpR6sin3hcuRZ7B+TpEFpDKGaDfNoVQaIApBs5B6VI5QavK2snImATbxFDrL5mSf6QIQoJVieUGAwjHkDTxLw==",
+  "dgSpecHash": "OujC5f0Hexqk4QZMdXW4GvcnrXw+fegZF5ikZD3a5nTQ+c2TikGfO9O/U/DSYdK4JVS+zb7GxJfv8dmVStuCMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lzban\\Development\\PizzaMaker\\PizzaMaker\\PizzaMaker.csproj",
+  "projectFilePath": "C:\\Users\\lzban\\Development\\PizzaMakerAPIEdition\\PizzaMaker\\PizzaMaker\\PizzaMaker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lzban\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\lzban\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

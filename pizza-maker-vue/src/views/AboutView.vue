@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <p>This is a simple project for showing how to develop a project with .Net and Vue.</p>
+    <p>It also show how to release and receive data via APIs.</p>
   </div>
 </template>
